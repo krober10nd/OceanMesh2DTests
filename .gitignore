@@ -1,0 +1,8 @@
+.gitignore
+*.nc
+*.shp
+*.prj
+*.shx
+*.dbf
+datasets
+Temp_grid.mat
