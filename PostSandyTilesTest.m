@@ -17,8 +17,8 @@ fh{1} = edgefx('geodata',gdat{1},'fs',R,'wl',wl,'slp',slp,...
                 'max_el',max_el,'dt',dt,'g',grade);
 dems = glob('datasets/*.nc');
 dems(ismember(dems,'datasets/topo15_compressed.nc')) = [];
-min_el = 50;
-for i = 1:10%length(dems)
+min_el = 100;
+for i = 1:length(dems)
     shp = split(dems{i}, '/');
     shp = split(shp{end}, '.nc');
     shp = strcat(shp{1},'.shp');
@@ -39,12 +39,7 @@ mshopts = mshopts.build;
 m = mshopts.grd;
 m = interp(m,gdat); 
 m.b = max(m.b,1); 
-
-%% Make the nodestrings
-m = makens(m,'auto',gdat{1}); % make the nodestring boundary conditions
-
-%% Plot and save the msh class object/write to fort.14
-plot(m,'bd',1,'Sinusoidal'); % plot on Sinusoidal projection with nodestrings
-plot(m,'b',1,'Sinusoidal'); % plot the bathy on Sinusoidal projection
-% Write an ADCIRC fort.14 compliant file to disk.
-write(m,'PostSandyTestMesh_min_el_50')
+m = makens(m,'auto',gdat{1});
+plot(m,'bd',1,'Sinusoidal');
+plot(m,'b',1,'Sinusoidal');
+write(m,'PostSandyTestMesh_min_el_100')
