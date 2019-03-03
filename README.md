@@ -9,7 +9,7 @@ Then you can run PostSandyTileTests.m</br>
 -------------------
 Error log:</br>
 </br>
-##### e2db1ae
+##### Result for OceanMesh2D commit e2db1ae
 
 Error using  >=
 Matrix dimensions must agree.
@@ -23,3 +23,16 @@ Error in msh/interp (line 557)
 Error in PostSandyTilesTest (line 40)
 m = interp(m,gdat);
 </br>
+
+#### Result for OceanMesh2D commit e3b9a83
+
+Undefined function or variable 'lon_change'.
+
+Error in GridData (line 138)
+obj.p(lon_change,1) = obj.p(lon_change,1) + 360;
+
+Error in msh/interp (line 694)
+                        obj = GridData(geodata{i},obj);
+
+Error in PostSandyTilesTest (line 40)
+m = interp(m,gdat);
